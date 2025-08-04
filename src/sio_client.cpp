@@ -58,6 +58,11 @@ namespace sio
     {
         m_impl->set_socket_close_listener(l);
     }
+
+    void client::set_client_disconnect_listener(client_disconnect_listener const& l)
+    {
+        m_impl->set_client_disconnect_listener(l);
+    }
     
     void client::clear_con_listeners()
     {

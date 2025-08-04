@@ -377,6 +377,10 @@ namespace sio
             while (!m_packet_queue.empty()) {
                 m_packet_queue.pop();
             }
+            if(m_client)
+            {
+                m_client->on_client_disconnect();
+            }
         }
     }
     

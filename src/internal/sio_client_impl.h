@@ -85,6 +85,8 @@ namespace sio
         
         SYNTHESIS_SETTER(client::socket_listener,socket_close_listener)
         
+        SYNTHESIS_SETTER(client::client_disconnect_listener,client_disconnect_listener)
+        
 #undef SYNTHESIS_SETTER
         
         
@@ -95,6 +97,7 @@ namespace sio
             m_fail_listener = nullptr;
             m_reconnect_listener = nullptr;
             m_reconnecting_listener = nullptr;
+            m_client_disconnect_listener = nullptr;
         }
         
         void clear_socket_listeners()
@@ -176,6 +179,7 @@ namespace sio
 
         void on_message(connection_hdl con, client_type::message_ptr msg);
 
+        void on_client_disconnect();
         //socketio callbacks
         void on_handshake(message::ptr const& message);
 
@@ -227,6 +231,7 @@ namespace sio
         client::con_listener m_reconnecting_listener;
         client::reconnect_listener m_reconnect_listener;
         client::close_listener m_close_listener;
+        client::client_disconnect_listener m_client_disconnect_listener;
         
         client::socket_listener m_socket_open_listener;
         client::socket_listener m_socket_close_listener;

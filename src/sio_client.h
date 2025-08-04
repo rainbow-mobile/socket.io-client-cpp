@@ -39,6 +39,8 @@ namespace sio
         
         typedef std::function<void(std::string const& nsp)> socket_listener;
         
+        typedef std::function<void(void)> client_disconnect_listener;
+        
         client();
         client(client_options const& options);
         ~client();
@@ -57,6 +59,8 @@ namespace sio
         void set_socket_open_listener(socket_listener const& l);
         
         void set_socket_close_listener(socket_listener const& l);
+        
+        void set_client_disconnect_listener(client_disconnect_listener const& l);
         
         void clear_con_listeners();
         
